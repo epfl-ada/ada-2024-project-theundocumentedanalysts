@@ -11,22 +11,24 @@ This project explores the evolution of actors’ careers and the portrayal of an
 The directory structure of new project looks like this:
 
 ```
-├── data                        <- Project data files
+├── data                        <- Project data files #IGNORED
 │
 ├── src                         <- Source code
 │   ├── data                            <- Data directory
 │   ├── models                          <- Model directory
 │   ├── utils                           <- Utility directory
-│   ├── scripts                         <- Shell scripts
+│   ├── scripts                         <- Data pipelines
 │
 ├── tests                       <- Tests of any kind
 │
-├── results.ipynb               <- a well-structured notebook showing the results
 │
 ├── .gitignore                  <- List of files ignored by git
-├── pip_requirements.txt        <- File for installing python dependencies
+├── pip_requirements.txt        <- List of used libraries
+├── install_requirements.ipynb  <- Notebook to install or update python dependencies
 └── README.md
 ```
+
+Check install_requirements.ipynb to update required libraries.
 
 ## Research Questions
 

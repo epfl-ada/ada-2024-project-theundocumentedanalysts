@@ -7,7 +7,7 @@ import mplcursors
 import helpers_API
 
 # Path to the file containing actor roles
-PATH = 'data/MovieSummaries/tvtropes.clusters.txt'
+PATH = 'data/CMU_dataset/tvtropes.clusters.txt'
 
 # Download VADER lexicon for sentiment analysis (first-time setup)
 nltk.download('vader_lexicon')
@@ -82,7 +82,7 @@ def plot_sentiment_and_popularity(df, remove_zero_sentiment=True):
 # Main function to run the pipeline
 df = process_file(PATH)
 df['popularity'] = df['actor'].apply(helpers_API.get_actor_popularity)
-df.to_csv('data/actor_sentiment_popularity_scores.csv', index=False)
+df.to_csv('output_data/actor_sentiment_popularity_scores.csv', index=False)
 plot_sentiment_and_popularity(df)
 
 
