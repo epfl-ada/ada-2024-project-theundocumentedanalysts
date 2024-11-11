@@ -1,3 +1,4 @@
 # Ignore the dataset folder
 data/
 .DS_Store
+__pycache__

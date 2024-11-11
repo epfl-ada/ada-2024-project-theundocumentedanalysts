@@ -11,21 +11,32 @@ This project explores the evolution of actors’ careers and the portrayal of an
 The directory structure of new project looks like this:
 
 ```
-├── data                        <- Project data files #IGNORED
+├── data/                        <- Project data files #IGNORED
+   ├── CMU_dataset/           <- Chosen dataset
+   ├── TMDB_dataset/          <- TMDB local dataset to avoid API requests
+   ├── coreNLP                <- Additionnal Stanford CoreNLP-processed summaries dataset
+   └── the_oscar_award.csv    <- Academy Awards: 1927 - 2024 nominees and winners dataset
 │
-├── src                         <- Source code
-│   ├── scripts                         <- Data pipelines and plots
+│
+├── output_data/                        <- Processed data files
+   ├── actor_sentiment_popularity_scores.csv    <- tvtropes_pipeline.py output
+│
+│
+├── src/                         <- Source code
+   ├── scripts/                        <- Data pipelines and plots
       ├── helpers_API.py               <- TMDB database API GET functions
       ├── SP_plot.py                   <- Sentiment/Popularity score plot for actors
       ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
       ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
       ├── sami
-      ├── sami
+      └── sami
 │
+│
+├── freebase-wikidata-convert/            <- External Freebase converter to wikidata IDs
 │
 │
 ├── .gitignore                  <- List of files ignored by git
-├── pip_requirements.txt        <- List of used libraries
+├── requirements.txt            <- List of used libraries
 ├── install_requirements.ipynb  <- Notebook to install or update python dependencies
 └── README.md
 ```
@@ -53,6 +64,14 @@ In addition to the **CMU Movie Summary Corpus**, we propose using data from:
    - **Content**: TMDb provides enriched metadata for each film, including genre, keywords, and actor bios.
    - **Processing Approach**: Using Python API requests, we will gather additional genre and character information for sentiment analysis. TMDb's documentation suggests the need for API keys and throttling limits, which we’ll accommodate in our scheduling.
    - **Expected Data Size and Format**: JSON format; results are manageable in size due to TMDb's structured pagination.
+   ## TODO explain that we downloaded dataset instead of API
+
+3. **Oscars**:
+## TODO add content
+
+4. **CoreNLP**:
+## TODO add content and explain that we still didnt manage to use this dataset 
+
 
 These datasets will be processed to handle memory management and enrichment tasks, such as merging genres with sentiment scores and managing network data.
 
@@ -71,6 +90,7 @@ These datasets will be processed to handle memory management and enrichment task
    - Using sentiment and genre data, we will create a machine-learning-based generator that proposes new movie titles and summaries tailored to an actor’s typical roles. This will involve a generative model using text data from plot summaries, focusing on genre and emotional alignment.
 
 ## Proposed Timeline - A revoir
+## TODO take into account HW2
 
 
 | Phase                              | Tasks                                                                                                 | Date                         |
