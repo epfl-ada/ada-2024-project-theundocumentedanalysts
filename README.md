@@ -14,12 +14,14 @@ The directory structure of new project looks like this:
 ├── data                        <- Project data files #IGNORED
 │
 ├── src                         <- Source code
-│   ├── data                            <- Data directory
-│   ├── models                          <- Model directory
-│   ├── utils                           <- Utility directory
-│   ├── scripts                         <- Data pipelines
+│   ├── scripts                         <- Data pipelines and plots
+      ├── helpers_API.py               <- TMDB database API GET functions
+      ├── SP_plot.py                   <- Sentiment/Popularity score plot for actors
+      ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
+      ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
+      ├── sami
+      ├── sami
 │
-├── tests                       <- Tests of any kind
 │
 │
 ├── .gitignore                  <- List of files ignored by git
