@@ -66,16 +66,19 @@ In addition to the **CMU Movie Summary Corpus**, we propose using data from:
    - **Content**: TMDb provides enriched metadata for each film, including genre, keywords, and actor bios.
    - **Processing Approach**: Using Python API requests, we will gather additional genre and character information for sentiment analysis. TMDb's documentation suggests the need for API keys and throttling limits, which we’ll accommodate in our scheduling.
    - **Expected Data Size and Format**: JSON format; results are manageable in size due to TMDb's structured pagination.
-   ## TODO explain that we downloaded dataset instead of API
+
+This dataset was downloaded to avoid the delays associated with making multiple API requests, allowing for quicker access to data without waiting for individual responses. Since the data is not fully up-to-date, we will still use the TMDB API to supplement and update the dataset as needed. This approach combines the efficiency of using a local dataset for initial analyses with the accuracy of API updates to ensure we have the latest information on movie genres, release dates, and actor bios.
 
 3. **Oscars**:
 https://www.kaggle.com/datasets/unanimad/the-oscar-award
-## TODO add content
+- **Content**: This dataset contains Oscar nomination and award data from 1927 to 2024, including details on award categories, nominees, and winners.
+- **Processing Approach**: This dataset offers valuable insights into critically acclaimed performances. Our analysis will focus on correlating Oscar data with sentiment trends and genre shifts, particularly to examine how award-winning performances align with genre evolution and the portrayal of sympathetic villains.
 
 4. **Movie ratings**:
 https://www.kaggle.com/datasets/thedevastator/imdb-movie-ratings-dataset
-## TODO add content
-
+- **Content**: This dataset provides movie ratings, including IMDb ratings, votes, and reviews.
+- **Processing Approach**: This data will be used to correlate actor clusters and genres with box office success metrics, allowing us to explore how specific actor networks and genres contribute to financial and critical success. It may also help assess how sentimental tones or villain portrayals affect audience reception.
+  
 5. **CoreNLP**:
 ## TODO add content and explain that we still didnt manage to use this dataset 
 
@@ -97,20 +100,17 @@ These datasets will be processed to handle memory management and enrichment task
    - Using sentiment and genre data, we will create a machine-learning-based generator that proposes new movie titles and summaries tailored to an actor’s typical roles. This will involve a generative model using text data from plot summaries, focusing on genre and emotional alignment.
 
 ## Proposed Timeline - A revoir
-## TODO take into account HW2
-
 
 | Phase                              | Tasks                                                                                                 | Date                         |
 |------------------------------------|-------------------------------------------------------------------------------------------------------|------------------------------|
 | **Week 1: Initial Setup**          | Dataset acquisition, initial analyses, and preprocessing setup                                        | Nov 5 - Nov 12               |
-| **Week 2: Data Exploration & Pipeline Setup** | Perform descriptive statistics, sentiment analysis setup, and pipeline documentation  | Nov 12 - Nov 15 *(P2 Deadline)* |
-| **Week 3: Network Mapping**        | Build the actor constellation network and analyze collaboration impact on success metrics             | Nov 16 - Nov 24              |
-| **Week 4: Sentiment Analysis**     | Conduct sentiment analysis on plot summaries to identify sympathetic villains and genre trends        | Nov 25 - Dec 1               |
-| **Week 5: Visualization**          | Create visualizations for genre evolution, constellations, and sympathetic villain trends             | Dec 2 - Dec 8                |
+| **Week 2: Data Exploration & Pipeline Setup** | Perform descriptive statistics, sentiment analysis setup, and pipeline documentation. HW2 initial work begins.  | Nov 12 - Nov 15 *(P2 Deadline)* |
+| **Week 3: HW2 Completion & Network Mapping**  | Complete HW2 tasks, including descriptive statistics and initial visualizations. Begin actor network mapping.  | Nov 16 - Nov 24              |
+| **Week 4: HW2 Submission & Sentiment Analysis** | Finalize HW2 deliverables. Conduct sentiment analysis on plot summaries to identify sympathetic villains and genre trends.   | Nov 25 - Nov 29 *(HW2 Deadline)* |
+| **Week 5: Visualization Refinement**          | Create visualizations for genre evolution, constellations, and sympathetic villain trends             | Dec 2 - Dec 8                |
 | **Week 6: Interactive Feature**    | Develop and test the interactive movie plot generator, integrate into final presentation              | Dec 9 - Dec 15               |
 | **Week 7: Finalization**           | Complete documentation, README update, data story creation, and project repository review             | Dec 16 - Dec 20 *(P3 Deadline)* |
 
----
 
 
 ## Organization within the Team - A déterminer
