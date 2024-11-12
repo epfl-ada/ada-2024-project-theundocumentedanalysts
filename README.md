@@ -16,6 +16,7 @@ The directory structure of new project looks like this:
    ├── TMDB_dataset/          <- TMDB local dataset to avoid API requests
    ├── coreNLP                <- Additionnal Stanford CoreNLP-processed summaries dataset
    └── the_oscar_award.csv    <- Academy Awards: 1927 - 2024 nominees and winners dataset
+   └── movie_data.csv         <- Directors, Actors, Genres, and Movies ratings
 │
 │
 ├── output_data/                        <- Processed data files
@@ -28,13 +29,14 @@ The directory structure of new project looks like this:
       ├── SP_plot.py                   <- Sentiment/Popularity score plot for actors
       ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
       ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
-      ├── sami
-      └── sami
+      ├── oscars_movies_analysis.ipynb <- 
+      └── Hedi's file
 │
 │
 ├── freebase-wikidata-convert/            <- External Freebase converter to wikidata IDs
 │
 │
+├── freebase_convert.py         <- Converter script from freebase to wikidata
 ├── .gitignore                  <- List of files ignored by git
 ├── requirements.txt            <- List of used libraries
 ├── install_requirements.ipynb  <- Notebook to install or update python dependencies
@@ -67,9 +69,14 @@ In addition to the **CMU Movie Summary Corpus**, we propose using data from:
    ## TODO explain that we downloaded dataset instead of API
 
 3. **Oscars**:
+https://www.kaggle.com/datasets/unanimad/the-oscar-award
 ## TODO add content
 
-4. **CoreNLP**:
+4. **Movie ratings**:
+https://www.kaggle.com/datasets/thedevastator/imdb-movie-ratings-dataset
+## TODO add content
+
+5. **CoreNLP**:
 ## TODO add content and explain that we still didnt manage to use this dataset 
 
 
