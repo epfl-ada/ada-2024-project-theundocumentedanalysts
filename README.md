@@ -29,7 +29,7 @@ The directory structure of new project looks like this:
       ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
       ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
       ├── oscars_movies_analysis.ipynb <- Actor/Genres constellations analysis and additional oscars implementations
-      └── Hedi's file
+      └── regression_success.ipynb     <- Predicting IMDB Score using movie_metadata and the MOVIE file in the TMDB dataset
 │
 │
 ├── freebasetowiki/             <- External Freebase converter to wikidata IDs
