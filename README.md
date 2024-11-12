@@ -10,7 +10,7 @@ This project explores the evolution of actors’ careers and the portrayal of an
 The directory structure of new project looks like this:
 
 ```
-├── data/                        <- Project data files #IGNORED
+├── data/                     <- Project data files #IGNORED
    ├── CMU_dataset/           <- Chosen dataset
    ├── TMDB_dataset/          <- TMDB local dataset to avoid API requests
    ├── coreNLP                <- Additionnal Stanford CoreNLP-processed summaries dataset
@@ -18,21 +18,21 @@ The directory structure of new project looks like this:
    └── movie_data.csv         <- Directors, Actors, Genres, and Movies ratings
 │
 │
-├── output_data/                        <- Processed data files
+├── output_data/                                <- Processed data files
    ├── actor_sentiment_popularity_scores.csv    <- tvtropes_pipeline.py output
 │
 │
-├── src/                         <- Source code
+├── src/                               <- Source code
    ├── scripts/                        <- Data pipelines and plots
       ├── helpers_API.py               <- TMDB database API GET functions
       ├── SP_plot.py                   <- Sentiment/Popularity score plot for actors
       ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
       ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
-      ├── oscars_movies_analysis.ipynb <- 
+      ├── oscars_movies_analysis.ipynb <- Actor/Genres constellations analysis and additional oscars implementations
       └── Hedi's file
 │
 │
-├── freebase-wikidata-convert/            <- External Freebase converter to wikidata IDs
+├── freebasetowiki/             <- External Freebase converter to wikidata IDs
 │
 │
 ├── freebase_convert.py         <- Converter script from freebase to wikidata
@@ -66,20 +66,21 @@ In addition to the **CMU Movie Summary Corpus**, we propose using data from:
    - **Processing Approach**: Using Python API requests, we will gather additional genre and character information for sentiment analysis. TMDb's documentation suggests the need for API keys and throttling limits, which we’ll accommodate in our scheduling.
    - **Expected Data Size and Format**: JSON format; results are manageable in size due to TMDb's structured pagination.
 
-This dataset was downloaded to avoid the delays associated with making multiple API requests, allowing for quicker access to data without waiting for individual responses. Since the data is not fully up-to-date, we will still use the TMDB API to supplement and update the dataset as needed. This approach combines the efficiency of using a local dataset for initial analyses with the accuracy of API updates to ensure we have the latest information on movie genres, release dates, and actor bios.
+A snapshot of this dataset was downloaded to avoid the delays associated with making multiple API requests, allowing for quicker access to data without waiting for individual responses. Since the data is not fully up-to-date, we will still use the TMDB API to supplement and update the dataset as needed. This approach combines the efficiency of using a local dataset for initial analyses with the accuracy of API updates to ensure we have the latest information on movie genres, release dates, and actor bios.
 
 3. **Oscars**:
 https://www.kaggle.com/datasets/unanimad/the-oscar-award
-- **Content**: This dataset contains Oscar nomination and award data from 1927 to 2024, including details on award categories, nominees, and winners.
-- **Processing Approach**: This dataset offers valuable insights into critically acclaimed performances. Our analysis will focus on correlating Oscar data with sentiment trends and genre shifts, particularly to examine how award-winning performances align with genre evolution and the portrayal of sympathetic villains.
+   - **Content**: This dataset contains Oscar nomination and award data from 1927 to 2024, including details on award categories, nominees, and winners.
+   - **Processing Approach**: This dataset offers valuable insights into critically acclaimed performances. Our analysis will focus on correlating Oscar data with sentiment trends and genre shifts, particularly to examine how award-winning performances align with genre evolution and the portrayal of sympathetic villains.
 
 4. **Movie ratings**:
 https://www.kaggle.com/datasets/thedevastator/imdb-movie-ratings-dataset
-- **Content**: This dataset provides movie ratings, including IMDb ratings, votes, and reviews.
-- **Processing Approach**: This data will be used to correlate actor clusters and genres with box office success metrics, allowing us to explore how specific actor networks and genres contribute to financial and critical success. It may also help assess how sentimental tones or villain portrayals affect audience reception.
-  
-5. **CoreNLP**:
-## TODO add content and explain that we still didnt manage to use this dataset 
+   - **Content**: This dataset provides movie ratings, including IMDb ratings, votes, and reviews.
+   - **Processing Approach**: This data will be used to correlate actor clusters and genres with box office success metrics, allowing us to explore how specific actor networks and genres contribute to financial and critical success. It may also help assess how sentimental tones or villain portrayals affect audience reception.
+
+5. **Stanford CoreNLP-processed summaries**:
+   - **Content**: This complementary dataset contains all of the plot summaries from above, run through the Stanford CoreNLP pipeline.
+   - **Processing Approach**: We are still exploring how to use this dataset due to its unusual format and plan to study its pipeline to understand its storage structure.
 
 
 These datasets will be processed to handle memory management and enrichment tasks, such as merging genres with sentiment scores and managing network data.
@@ -95,8 +96,8 @@ These datasets will be processed to handle memory management and enrichment task
 3. **Visualization**:
    - Through `Matplotlib` and `Plotly`, we will create visual graphs for actor genre evolution and sympathetic villain portrayal. Time series plots will show trends in genres and sentiment tones over time.
    
-4. **Interactive Movie Plot Generator**:
-   - Using sentiment and genre data, we will create a machine-learning-based generator that proposes new movie titles and summaries tailored to an actor’s typical roles. This will involve a generative model using text data from plot summaries, focusing on genre and emotional alignment.
+4. **Revenue and Ratings Predictor**:
+   - We will develop a machine-learning-based model that predicts a movie’s potential revenue and ratings based on the past work of its actors and director. 
 
 ## Proposed Timeline - A revoir
 
@@ -112,9 +113,42 @@ These datasets will be processed to handle memory management and enrichment task
 
 
 
-## Organization within the Team - A déterminer
+## Organization within the Team
 
-faut répartir les tâches !
+<table class="tg" style="table-layout: fixed; width: 342px">
+<colgroup>
+<col style="width: 160px">
+<col style="width: 280px">
+</colgroup>
+<thead>
+  <tr>
+    <th class="tg-0lax">Teammate Name</th>
+    <th class="tg-0lax">Contributions</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0lax">Karine Rafla </td>
+    <td class="tg-0lax">Reports redaction<br>Research on Freebase</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Mehdi Bouchoucha </td>
+    <td class="tg-0lax">Project layout<br>Additionnal datasets research</td>
+  </tr>
+    <tr>
+    <td class="tg-0lax">Mohamed Hedi Hidri </td>
+    <td class="tg-0lax"> Work on interactive predictor<br>Additionnal datasets research</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Sami Amrouche </td>
+    <td class="tg-0lax">Constellation work<br>Oscars analysis</td>
+  </tr>
+  <tr>
+    <td class="tg-0lax">Tamara Antoun </td>
+    <td class="tg-0lax">Work on sympathetic villain<br>Reports redaction</td>
+  </tr>
+</tbody>
+</table>
 
 **Internal Milestones**:
 - **Nov 12**: Dataset acquisition and preprocessing setup completed, with initial analyses and descriptive statistics in place.
@@ -125,8 +159,22 @@ faut répartir les tâches !
 - **Dec 15**: Finalize all features, complete documentation, and prepare for **P3 submission**.
 - **Dec 20**: **P3 Submission** – Final project code, results notebook, and data story URL.
 
-## Questions for TAs
+## Challenges Faced and Adjusted Plans
 
-1. Would the integration of TMDb API data be feasible given the time and API rate limits, or should we explore a static alternative?
-2. Are there recommended best practices for sentiment analysis specific to character-based plot data?
-3. For the interactive component, would it be better to pursue a pre-trained generative model, or should we create a simple template-based text generator?
+**Shift in Focus: From Interactive Movie Plot Generator to Revenue and Ratings Predictor**:
+
+Our original idea was to develop an Interactive Movie Plot Generator: a machine-learning-based tool that would propose new movie titles and summaries tailored to an actor’s typical roles by analyzing sentiment and genre data. The plan involved a generative model using text from plot summaries to align with an actor’s emotional and genre-based patterns.
+
+However, we decided to pivot to a Revenue and Ratings Predictor instead. This new approach focuses on forecasting potential revenue and ratings by analyzing historical data from actors and directors, leveraging sentiment, genre, and other key attributes. The switch was driven by the realization that implementing a generative model locally would require extensive resources and introduce technical complexities that were outside our current scope.
+
+This adjusted approach allowed us to focus on achievable predictive insights while still working with rich data on actors, directors, and genre alignment.
+
+**Handling Freebase Data in Our Dataset**
+
+Our initial dataset includes numerous Freebase IDs. Freebase, originally owned by a different company, was acquired by Google and shut down in 2015. Although there is no longer API access to Freebase, we were able to locate a data dump from the last snapshot of the service. This dump contains links that refer to other Freebase IDs, but without direct API access, it posed challenges for retrieving relevant data.
+
+After extensive research, we implemented an external converter that maps Freebase IDs to Wikidata entries. While this converter cannot resolve all references due to the loss of some data after Freebase’s shutdown, it still enables us to retrieve a portion of the information that would otherwise be inaccessible. This workaround allows us to recover some of the lost data and continue enriching our dataset with valuable external information.
+
+**CoreNLP Dataset**
+
+This complementary dataset contains all of the plot summaries mentioned earlier, processed through the Stanford CoreNLP pipeline. We are still exploring how to best utilize this dataset due to its unconventional format. Our plan is to study the pipeline further in order to understand its storage structure and determine the most efficient way to integrate it into our project.
