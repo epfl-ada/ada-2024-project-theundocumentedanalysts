@@ -25,7 +25,7 @@ The directory structure of new project looks like this:
 ├── src/                               <- Source code
    ├── scripts/                        <- Data pipelines and plots
       ├── helpers_API.py               <- TMDB database API GET functions
-      ├── SP_plot.py                   <- Sentiment/Popularity score plot for actors
+      ├── SP_plot.ipynb                <- Sentiment/Popularity score plot for actors
       ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
       ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
       ├── oscars_movies_analysis.ipynb <- Actor/Genres constellations analysis and additional oscars implementations
