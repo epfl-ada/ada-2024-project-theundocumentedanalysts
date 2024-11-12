@@ -1,6 +1,5 @@
-# Hollywood Evolution: A Deep Dive into Actor Career Paths, Genre Shifts, and the Rise of the Sympathetic Villain
 
-# Unfolding the Actor-Genre Constellation in Cinema: Relationships, Sentiment, and the Evolution of the Sympathetic Villain
+# Unfolding the Actor-Genre Constellation in Cinema: Relationships, Sentiment, and the Rise of the Sympathetic Villain
 
 ## Abstract
 
