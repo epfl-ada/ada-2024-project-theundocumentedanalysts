@@ -133,7 +133,7 @@ These datasets will be processed to handle memory management and enrichment task
   </tr>
   <tr>
     <td class="tg-0lax">Mehdi Bouchoucha </td>
-    <td class="tg-0lax">Project layout<br>Additionnal datasets research</td>
+    <td class="tg-0lax">Project layout<br>Additional datasets research</td>
   </tr>
     <tr>
     <td class="tg-0lax">Mohamed Hedi Hidri </td>
