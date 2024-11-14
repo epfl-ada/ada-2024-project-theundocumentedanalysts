@@ -20,7 +20,9 @@ The directory structure of new project looks like this:
 │
 ├── output_data/                                <- Processed data files
    ├── actor_sentiment_popularity_scores.csv    <- tvtropes_pipeline.py output
-│
+   ├── 3 additional html files                  <- PyVis network graphs outputs for different actor/genre relations from oscar_movies_analysis.ipynb notebook
+
+
 │
 ├── src/                               <- Source code
    ├── scripts/                        <- Data pipelines and plots
