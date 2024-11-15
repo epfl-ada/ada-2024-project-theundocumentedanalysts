@@ -105,7 +105,7 @@ Here is the revised and more detailed version of your methods section reflecting
 
 3. **Network Analysis of Actor Collaborations**:
    - **Graph Construction**: Using `NetworkX`, we will build networks depicting collaborations among actors, identifying clusters and influential collaborations that correlate with box office performance.
-   - **Metrics for Influence**: Centrality measures, including betweenness and eigenvector centrality, will be used to highlight key actor constellations and their impact on movie success.
+   - **Metrics for Influence**: The influence of actors in this analysis is measured using several key metrics. Actor Collaboration Frequency highlights how often actors work together, indicating the strength of their partnerships. Genre Diversity Score, calculated using Shannon Diversity Index, measures the versatility of actor pairs across different genres. Lastly, Network Centrality identifies the prominence of actors in the collaboration network based on their number of connections. Together, these metrics provide insights into the impact and versatility of actors within the movie industry.
 
 4. **Machine Learning-Based Revenue and Ratings Predictor**:
    - **Predictive Modeling**: Using `XGBoost` and `sklearn`, we will build models that predict a movie’s box office revenue and ratings based on actor collaborations, genres, and plot sentiment features.
