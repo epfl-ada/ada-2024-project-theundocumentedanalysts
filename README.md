@@ -27,7 +27,7 @@ The directory structure of new project looks like this:
    ├── helpers_actors_analysis.py      <- Helper functions to Actors, Movies and Oscars analysis
    ├── helpers_villain_analysis.py     <- Helper functions for villain sentiment analysis
    ├── helpers_API.py                  <- TMDB database API GET functions
-   ├── 3 additional html files         <- PyVis network graphs outputs for different actor/genre relations from oscar_movies_analysis.ipynb notebook
+   ├── 3 additional html files         <- PyVis network graphs outputs for different actor/genre relations from results.ipynb notebook. Run the files on chrome for visualization.
    │
    └── drafts/                         <- Separate data pipelines and plots
       ├── SP_plot.ipynb                <- Sentiment/Popularity score plot for actors
