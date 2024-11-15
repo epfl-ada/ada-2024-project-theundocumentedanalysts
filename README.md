@@ -115,7 +115,7 @@ Here is the revised and more detailed version of your methods section reflecting
    - **Visual Representation**: `Matplotlib` and `mplcursors` will be used to create interactive plots that display trends in actor collaborations, sentiment distributions over time, and other key metrics. The `matplotlib-venn` library will also be used to visualize the classification of characters as sympathetic villains. This library allowed us to create Venn diagrams to represent the overlap between characters identified as villains and those showing sympathetic traits based on their sentiment analysis and emotional scoring.
 
 
-## Proposed Timeline - A revoir
+## Proposed Timeline
 
 | Phase                              | Tasks                                                                                                 | Date                         |
 |------------------------------------|-------------------------------------------------------------------------------------------------------|------------------------------|
