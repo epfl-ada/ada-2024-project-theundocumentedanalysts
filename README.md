@@ -14,30 +14,33 @@ The directory structure of new project looks like this:
    ├── CMU_dataset/           <- Chosen dataset
    ├── TMDB_dataset/          <- TMDB local dataset to avoid API requests
    ├── coreNLP                <- Additionnal Stanford CoreNLP-processed summaries dataset
-   └── the_oscar_award.csv    <- Academy Awards: 1927 - 2024 nominees and winners dataset
+   ├── the_oscar_award.csv    <- Academy Awards: 1927 - 2024 nominees and winners dataset
    └── movie_data.csv         <- Directors, Actors, Genres, and Movies ratings
 │
 │
 ├── output_data/                                <- Processed data files
-   ├── actor_sentiment_popularity_scores.csv    <- tvtropes_pipeline.py output
-   ├── 3 additional html files                  <- PyVis network graphs outputs for different actor/genre relations from oscar_movies_analysis.ipynb notebook
-
-
+   └── actor_sentiment_popularity_scores.csv    <- tvtropes_pipeline.py output
+│
 │
 ├── src/                               <- Source code
-   ├── scripts/                        <- Data pipelines and plots
-      ├── helpers_API.py               <- TMDB database API GET functions
+   ├── results.ipynb                   <- Main file
+   ├── helpers_actors_analysis.py      <- Helper functions to Actors, Movies and Oscars analysis
+   ├── helpers_villain_analysis.py     <- Helper functions for villain sentiment analysis
+   ├── helpers_API.py                  <- TMDB database API GET functions
+   ├── 3 additional html files         <- PyVis network graphs outputs for different actor/genre relations from oscar_movies_analysis.ipynb notebook
+   │
+   └── drafts/                         <- Separate data pipelines and plots
       ├── SP_plot.ipynb                <- Sentiment/Popularity score plot for actors
       ├── tvtropes_pipeline.py         <- Data pipeline that processes tvtropes file
       ├── sympathetic_villain.ipynb    <- Sentiment analysis pipeline on character_metadata
-      ├── oscars_movies_analysis.ipynb <- Actor/Genres constellations analysis and additional oscars implementations
-      └── regression_success.ipynb     <- Predicting IMDB Score using movie_metadata and the MOVIE file in the TMDB dataset
+      └── oscars_movies_analysis.ipynb <- Actor/Genres constellations analysis and additional oscars implementations
 │
 │
 ├── freebasetowiki/             <- External Freebase converter to wikidata IDs
 │
 │
 ├── freebase_convert.py         <- Converter script from freebase to wikidata
+├── notebook_merger.py          <- notebooks merger script
 ├── .gitignore                  <- List of files ignored by git
 ├── requirements.txt            <- List of used libraries
 ├── install_requirements.ipynb  <- Notebook to install or update python dependencies
