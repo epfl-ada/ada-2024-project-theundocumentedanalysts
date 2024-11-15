@@ -48,11 +48,11 @@ Check install_requirements.ipynb to update required libraries.
 
 ## Research Questions
 
-1. **How do actors' careers evolve over time in terms of genre and emotional tone?**
-2. **What collaborative actor constellations are associated with higher box office success or critical acclaim?**
-3. **How has the portrayal of villains, especially sympathetic or complex antagonists, evolved over time across different genres?**
-4. **Can we identify patterns between actor collaboration networks and the rise of specific character archetypes, like the sympathetic villain?**
-5. **What potential movie plotlines can be generated based on an actor’s career history in genres and emotional tones?**
+
+1. **What collaborative actor constellations are associated with higher box office success or critical acclaim?**
+2. **How has the portrayal of villains, especially sympathetic or complex antagonists, evolved over time across different genres?**
+3. **Can we identify patterns between actor collaboration networks and the rise of specific character archetypes, like the sympathetic villain?**
+4. **How do the attributes of actors, directors, and movie plot content influence the predicted IMDb score and box office revenue of a movie, and can a predictive model effectively quantify these influences to provide accurate estimations?**
 
 ## Proposed Additional Datasets
 
@@ -87,19 +87,32 @@ https://www.kaggle.com/datasets/thedevastator/imdb-movie-ratings-dataset
 
 These datasets will be processed to handle memory management and enrichment tasks, such as merging genres with sentiment scores and managing network data.
 
-## Methods
+
+Here is the revised and more detailed version of your methods section reflecting the updates and additional content from the newly provided notebook:
+
+---
+
+### Methods
 
 1. **NLP and Sentiment Analysis**:
-   - We will conduct sentiment analysis on the `plot_summaries.txt` to identify emotional tones and sympathetic/antagonistic character traits. Using Python's `NLTK` and `TextBlob`, we will extract sentiment scores and categorize them according to genres and characters.
-   
-2. **Network Analysis of Actor Constellations**:
-   - Using `NetworkX` and `Gephi`, we will build collaboration networks, identifying clusters where actor partnerships correlate with box office or critical success. Metrics such as betweenness and eigenvector centrality will highlight influential constellations.
-   
-3. **Visualization**:
-   - Through `Matplotlib` and `Plotly`, we will create visual graphs for actor genre evolution and sympathetic villain portrayal. Time series plots will show trends in genres and sentiment tones over time.
-   
-4. **Revenue and Ratings Predictor**:
-   - We will develop a machine-learning-based model that predicts a movie’s potential revenue and ratings based on the past work of its actors and director. 
+   - **Text Tokenization**: Using `NLTK`, we will tokenize plot summaries for sentiment analysis, capturing character emotions and identifying sympathetic or complex antagonist traits.
+   - **Sentiment Categorization**: The focus will be on categorizing sentiments related to character arcs, identifying sympathetic villains, and linking sentiment trends to box office success or critical acclaim.
+
+2. **Data Manipulation and Integration**:
+   - **Data Handling**: We will utilize cleaned data from `character.metadata.tsv` and `plot_summaries.txt` files to extract relevant features like `movie_id`, `character_name`, and their respective attributes.
+   - **Character-Level Analysis**: The emphasis is on using `pandas` to isolate character-level data, which allows for the identification of prominent characters, leading roles, and antagonistic portrayals in plot summaries.
+
+3. **Network Analysis of Actor Collaborations**:
+   - **Graph Construction**: Using `NetworkX`, we will build networks depicting collaborations among actors, identifying clusters and influential collaborations that correlate with box office performance.
+   - **Metrics for Influence**: Centrality measures, including betweenness and eigenvector centrality, will be used to highlight key actor constellations and their impact on movie success.
+
+4. **Machine Learning-Based Revenue and Ratings Predictor**:
+   - **Predictive Modeling**: Using `XGBoost` and `sklearn`, we will build models that predict a movie’s box office revenue and ratings based on actor collaborations, genres, and plot sentiment features.
+   - **Feature Engineering**: The model will incorporate sentiment scores, actor collaboration networks, genre influence, and director history to create a holistic prediction approach.
+
+5. **Data Visualization**:
+   - **Visual Representation**: `Matplotlib` and `mplcursors` will be used to create interactive plots that display trends in actor collaborations, sentiment distributions over time, and other key metrics.
+
 
 ## Proposed Timeline - A revoir
 
