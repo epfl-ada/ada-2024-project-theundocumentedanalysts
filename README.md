@@ -48,11 +48,9 @@ Check install_requirements.ipynb to update required libraries.
 
 ## Research Questions
 
-
-1. **What collaborative actor constellations are associated with higher box office success or critical acclaim?**
-2. **How has the portrayal of villains, especially sympathetic or complex antagonists, evolved over time across different genres?**
-3. **Can we identify patterns between actor collaboration networks and the rise of specific character archetypes, like the sympathetic villain?**
-4. **How do the attributes of actors, directors, and movie plot content influence the predicted IMDb score and box office revenue of a movie, and can a predictive model effectively quantify these influences to provide accurate estimations?**
+1. **How has the portrayal of villains, especially sympathetic or complex antagonists, evolved over time across different genres?**
+2. **Can we identify patterns between actor collaboration networks and the rise of specific character archetypes, like the sympathetic villain?**
+3. **How do the attributes of actors, directors, and movie plot content influence the predicted IMDb score and box office revenue of a movie, and can a predictive model effectively quantify these influences to provide accurate estimations?**
 
 ## Proposed Additional Datasets
 
