@@ -94,7 +94,7 @@ Here is the revised and more detailed version of your methods section reflecting
 
 1. **NLP and Sentiment Analysis**:
    - **Text Tokenization**: Using `NLTK`, we will tokenize plot summaries for sentiment analysis, capturing character emotions and identifying sympathetic or complex antagonist traits.
-   - **Sentiment Categorization**: The focus will be on categorizing sentiments related to character arcs, identifying sympathetic villains, and linking sentiment trends to box office success or critical acclaim.
+   - **Sentiment Categorization**: The focus will be on categorizing sentiments related to character arcs, identifying sympathetic villains, and linking sentiment trends to box office success or critical acclaim. We specifically leveraged VADER Sentiment Analysis from the `nltk.sentiment` module for its accuracy in handling text with nuanced expressions. VADER provides polarity scores (called compound scores) ranging from -1 (highly negative) to +1 (highly positive), that were used to classify characters, identifying those with predominantly negative sentiments as potential villains and those with mixed or balanced sentiments as more complex, sympathetic figures.
 
 2. **Data Manipulation and Integration**:
    - **Data Handling**: We will utilize cleaned data from `character.metadata.tsv` and `plot_summaries.txt` files to extract relevant features like `movie_id`, `character_name`, and their respective attributes.
@@ -109,7 +109,7 @@ Here is the revised and more detailed version of your methods section reflecting
    - **Feature Engineering**: The model will incorporate sentiment scores, actor collaboration networks, genre influence, and director history to create a holistic prediction approach.
 
 5. **Data Visualization**:
-   - **Visual Representation**: `Matplotlib` and `mplcursors` will be used to create interactive plots that display trends in actor collaborations, sentiment distributions over time, and other key metrics.
+   - **Visual Representation**: `Matplotlib` and `mplcursors` will be used to create interactive plots that display trends in actor collaborations, sentiment distributions over time, and other key metrics. The `matplotlib-venn` library will also be used to visualize the classification of characters as sympathetic villains. This library allowed us to create Venn diagrams to represent the overlap between characters identified as villains and those showing sympathetic traits based on their sentiment analysis and emotional scoring.
 
 
 ## Proposed Timeline - A revoir
