@@ -41,7 +41,7 @@ jsonschema==4.19.1
 jsonschema-specifications==2023.9.1
 jupyter-client==8.4.1
 jupyter-core==5.4.2
-jupyterlab-widgets==3.1.6
+jupyterlab-widgets==3.0.10
 kagglehub==0.3.4
 keras==3.6.0
 kiwisolver==1.4.4
