@@ -99,6 +99,9 @@ country_set = {
     'United States of America','Uruguay','West Germany'
 }
 
+genre_set = {g for g in genre_set if g in feature_columns}
+language_set = {l for l in language_set if l in feature_columns}
+country_set = {c for c in country_set if c in feature_columns}
 # Extract actual columns from feature_columns for genres, languages, and countries
 genre_columns = [c for c in feature_columns if c in genre_set]
 language_columns = [c for c in feature_columns if c in language_set]
