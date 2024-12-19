@@ -68,7 +68,7 @@ optree==0.13.1
 packaging==24.0
 pandas==2.2.2
 parso==0.8.3
-patsy==0.5.3
+patsy>=0.5.6
 pexpect==4.8.0
 pickleshare==0.7.5
 pillow==10.0.1
@@ -100,7 +100,7 @@ seaborn==0.13.2
 six==1.16.0
 smmap==5.0.0
 stack-data==0.6.3
-statsmodels==0.14.4
+statsmodels>=0.14.4
 streamlit==1.25.0
 sympy==1.13.1
 tenacity==8.2.3
@@ -113,7 +113,7 @@ threadpoolctl==3.2.0
 toml==0.10.2
 torch==2.5.1
 torchvision==0.20.1
-tornado==6.3.4
+tornado>=6.3.3
 tqdm==4.66.6
 traitlets==5.11.2
 typing-extensions==4.8.0
