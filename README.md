@@ -81,10 +81,6 @@ The directory structure of new project looks like this:
    - **Content**: IMDb ratings, votes, and reviews for movies.
    - **Processing Approach**: Correlation of actor clusters and genres with box office success metrics, exploring how actor networks and genres contribute to success.
 
-5. **[Stanford CoreNLP Dataset](https://stanfordnlp.github.io/CoreNLP/)**  
-   - **Content**: Plot summaries processed through the Stanford CoreNLP pipeline.
-   - **Processing Approach**: Exploring the dataset structure for effective integration into sentiment analysis pipelines.
-
 Here is the revised and more detailed version of your methods section reflecting the updates and additional content from the newly provided notebook:
 
 ---
