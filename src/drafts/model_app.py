@@ -191,18 +191,14 @@ st.markdown(
         background-color: #D00000; /* Slightly darker red on hover */
     }
     </style>
-    <button class="predict-button" onclick="predict()">📊 Predict IMDb Score</button>
-    <script>
-    function predict() {
-        const el = document.querySelector('button[kind="secondary"]');
-        if (el) el.click();
-    }
-    </script>
+    <form action="" method="post">
+        <button class="predict-button" type="submit">📊 Predict IMDb Score</button>
+    </form>
     """,
     unsafe_allow_html=True
 )
 
-if st.button("", key="secondary"):
+if st.button("Predict", key="predict_button"):
     if best_xgb is None:
         st.error("Model not loaded. Please load the model before predicting.")
     else:
