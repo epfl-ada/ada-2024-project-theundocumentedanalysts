@@ -17,7 +17,7 @@ with open('src/drafts/feature_columns.json', 'rb') as f:
 with open('src/drafts/scaler.pkl', 'rb') as f:
     scaler = pickle.load(f)
 
-# Known numeric features (as identified during training)
+
 numeric_features = ['movie_runtime', 'BUDGET']
 
 # Identify actor and director columns from the feature_columns
@@ -29,7 +29,7 @@ actor_columns = [c.replace('dummy_actor_', '') for c in actor_dummy_cols]
 director_columns = [c.replace('dummy_director_', '') for c in director_dummy_cols]
 
 # Create sets for genres, languages, and countries
-# (No changes here, as originally provided)
+
 genre_set = {
     "Absurdism","Action","Action Comedy","Action Thrillers","Action/Adventure","Addiction Drama","Adult",
     "Adventure","Adventure Comedy","Airplanes and airports","Albino bias","Alien Film","Alien invasion",
@@ -169,8 +169,6 @@ def prepare_input():
     # Reorder columns to match training
     input_data = input_data[feature_columns]
     
-    # IMPORTANT: Do not rename columns here. The scaler and model expect the original names.
-    # Just scale as is.
     input_data_scaled = scaler.transform(input_data)
     input_data = pd.DataFrame(input_data_scaled, columns=feature_columns)
 
@@ -184,3 +182,8 @@ if st.button("Predict IMDb Score"):
         # No renaming of columns here, as model and scaler were trained on original names
         prediction = best_xgb.predict(input_df)[0]
         st.success(f"Predicted IMDb score: {prediction:.2f}")
+
+
+# Redirect Button
+if st.button("🔗 Come Back to the Site"):
+    st.markdown("[Go to Mehdi's Site](https://mehdi1704.github.io/jekyll-theme-yat/)")
