@@ -110,26 +110,26 @@ country_columns = [c for c in feature_columns if c in country_set]
 st.title("IMDb Score Predictor")
 st.markdown("Provide movie details and get a predicted IMDb score.")
 
-# Numeric inputs
-st.header("Basic Movie Info")
+# Numeric Inputs
+st.header("🔢 Basic Movie Info")
 movie_runtime_input = st.number_input("Movie Runtime (minutes)", min_value=1, value=100)
 budget_input = st.number_input("Budget (USD)", min_value=1000, value=5000000)
 
-# Actors
-st.header("Cast and Crew")
+# Actor and Director Selection
+st.header("🎭 Cast and Crew")
 selected_actors = st.multiselect("Select Actors", actor_columns)
 selected_directors = st.multiselect("Select Directors", director_columns)
 
-# Genres
-st.header("Genres")
+# Genre Selection
+st.header("🎥 Genres")
 selected_genres = st.multiselect("Select Genres", genre_columns)
 
-# Languages
-st.header("Languages")
+# Language Selection
+st.header("🌐 Languages")
 selected_languages = st.multiselect("Select Languages", language_columns)
 
-# Country
-st.header("Production Country")
+# Country Selection
+st.header("🏳️ Production Country")
 selected_country = st.selectbox("Select Country", [None] + country_columns)
 
 def prepare_input():
@@ -174,16 +174,21 @@ def prepare_input():
 
     return input_data
 
-if st.button("Predict IMDb Score"):
+# Prediction Button
+if st.button("📊 Predict IMDb Score"):
     if best_xgb is None:
         st.error("Model not loaded. Please load the model before predicting.")
     else:
         input_df = prepare_input()
-        # No renaming of columns here, as model and scaler were trained on original names
         prediction = best_xgb.predict(input_df)[0]
         st.success(f"Predicted IMDb score: {prediction:.2f}")
 
-
-# Redirect Button
-if st.button("🔗 Come Back to the Site"):
-    st.markdown("[Go to Mehdi's Site](https://mehdi1704.github.io/jekyll-theme-yat/)")
+# Direct Navigation Button
+st.markdown(
+    """<a href="https://mehdi1704.github.io/jekyll-theme-yat/" target="_blank" style="text-decoration:none;">
+    <button style="background-color:#4CAF50; color:white; padding:10px 15px; border:none; border-radius:5px; cursor:pointer;">
+    🌐 Come Back to the Site
+    </button>
+    </a>""",
+    unsafe_allow_html=True
+)
