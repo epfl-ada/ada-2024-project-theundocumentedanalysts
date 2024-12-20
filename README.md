@@ -1,7 +1,7 @@
 
 # Unfolding the Actor-Genre Constellation in Cinema: Relationships, Sentiment, and the Rise of the Sympathetic Villain
 
-# Visit our website [herer](https://mehdi1704.github.io/jekyll-theme-yat/)
+# Visit our website [here](https://mehdi1704.github.io/jekyll-theme-yat/)
 
 ## Abstract
 
