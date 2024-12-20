@@ -1,6 +1,8 @@
 
 # Unfolding the Actor-Genre Constellation in Cinema: Relationships, Sentiment, and the Rise of the Sympathetic Villain
 
+# Visit our website [herer](https://mehdi1704.github.io/jekyll-theme-yat/)
+
 ## Abstract
 
 This project explores the evolution of actors’ careers and the portrayal of antagonists in cinema, using a blend of **network analysis**, **natural language processing (NLP)**, and **sentiment analysis**. We aim to uncover how actor career trajectories evolve across genres, the collaborative networks that shape successful film outcomes, and the rise of the "sympathetic villain" in popular cinema. Through the CMU Movie Summary Corpus and supplementary datasets, we will analyze genre shifts, actor collaboration clusters, and changing emotional tones associated with antagonists. The project intends to provide visualizations and insights into the key elements that drive cinematic success, while also offering an interactive component where users can simulate potential movie plots based on actor profiles. Our work will reveal trends in Hollywood's storytelling dynamics and demonstrate the interconnectedness of genre evolution, actor choices, and character portrayal.
