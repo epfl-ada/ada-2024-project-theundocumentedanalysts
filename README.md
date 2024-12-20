@@ -1,7 +1,7 @@
 
 # Unfolding the Actor-Genre Constellation in Cinema: Relationships, Sentiment, and the Rise of the Sympathetic Villain
 
-# Visit our website [here](https://mehdi1704.github.io/jekyll-theme-yat/)
+# You can find the data story on our website [here](https://mehdi1704.github.io/jekyll-theme-yat/)
 
 ## Abstract
 
@@ -48,150 +48,143 @@ The directory structure of new project looks like this:
 └── README.md
 ```
 
-Check install_requirements.ipynb to update required libraries.
+⚠️ **Important:** Refer to `install_requirements.ipynb` to ensure all required libraries are installed.
 
 ## Research Questions
 
-1. **How has the portrayal of villains, especially sympathetic or complex antagonists, evolved over time across different genres?**
-2. **Can we identify patterns between actor collaboration networks and the rise of specific character archetypes, like the sympathetic villain?**
-3. **How do the attributes of actors, directors, and movie plot content influence the predicted IMDb score and box office revenue of a movie, and can a predictive model effectively quantify these influences to provide accurate estimations?**
+**1. How have genre preferences and trends evolved over the decades?**
+
+**2. What is the impact of actor collaborations and director influence on movie success?**
+
+**3. How has the portrayal of villains, particularly sympathetic antagonists, changed over time?**
+
+**4. Can sentiment analysis reveal patterns in character portrayals, especially for antagonists?**
+
+**5. How do combined factors (actors, genres, directors) predict movie success metrics (IMDb ratings, box office revenues)?**
+## Proposed Additional Datasets
 
 ## Proposed Additional Datasets
 
-In addition to the **CMU Movie Summary Corpus**, we propose using data from:
+1. **[IMDb Collaborations Data](https://www.kaggle.com/rounakbanik/the-movies-dataset)**  
+   - **Content**: Insights into actor pairings, collaboration frequency, and success metrics (e.g., box office revenue, IMDb ratings).
+   - **Processing Approach**: Integration of IMDb collaboration data to analyze actor constellations. Using NetworkX, we’ll map actor networks and calculate centrality metrics for identifying influential nodes and clusters within Hollywood.
 
-1. **IMDb Collaborations Data**:
-   - **Content**: This dataset offers insights into actor pairings, collaboration frequency, and success metrics (e.g., box office revenue, IMDb ratings).
-   - **Processing Approach**: We will integrate IMDb collaboration data to analyze actor constellations. Using NetworkX, we’ll map actor networks and calculate centrality metrics for identifying influential nodes and clusters within Hollywood.
-   - **Expected Data Size and Format**: CSV/TSV format; expected to contain millions of rows detailing movie and actor relationships. Efficient processing with filtering and sampling will be necessary to manage size.
+2. **[The Movie Database (TMDb) API](https://developers.themoviedb.org/3/getting-started)**  
+   - **Content**: Metadata for films, including genres, keywords, and actor bios.
+   - **Processing Approach**: Using Python API requests to gather additional genre and character information for sentiment analysis. Pagination and API throttling will be managed during requests.
 
-2. **The Movie Database (TMDb) API**:
-   - **Content**: TMDb provides enriched metadata for each film, including genre, keywords, and actor bios.
-   - **Processing Approach**: Using Python API requests, we will gather additional genre and character information for sentiment analysis. TMDb's documentation suggests the need for API keys and throttling limits, which we’ll accommodate in our scheduling.
-   - **Expected Data Size and Format**: JSON format; results are manageable in size due to TMDb's structured pagination.
+3. **[Oscars Dataset](https://www.kaggle.com/unanimad/the-oscar-award)**  
+   - **Content**: Oscar nomination and award data from 1927 to 2024, including details on award categories, nominees, and winners.
+   - **Processing Approach**: Analysis of Oscar data to correlate critically acclaimed performances with sentiment trends and genre shifts.
 
-A snapshot of this dataset was downloaded to avoid the delays associated with making multiple API requests, allowing for quicker access to data without waiting for individual responses. Since the data is not fully up-to-date, we will still use the TMDB API to supplement and update the dataset as needed. This approach combines the efficiency of using a local dataset for initial analyses with the accuracy of API updates to ensure we have the latest information on movie genres, release dates, and actor bios.
+4. **[IMDb Ratings](https://www.kaggle.com/thedevastator/imdb-movie-ratings-dataset)**  
+   - **Content**: IMDb ratings, votes, and reviews for movies.
+   - **Processing Approach**: Correlation of actor clusters and genres with box office success metrics, exploring how actor networks and genres contribute to success.
 
-3. **Oscars**:
-https://www.kaggle.com/datasets/unanimad/the-oscar-award
-   - **Content**: This dataset contains Oscar nomination and award data from 1927 to 2024, including details on award categories, nominees, and winners.
-   - **Processing Approach**: This dataset offers valuable insights into critically acclaimed performances. Our analysis will focus on correlating Oscar data with sentiment trends and genre shifts, particularly to examine how award-winning performances align with genre evolution and the portrayal of sympathetic villains.
-
-4. **Movie ratings**:
-https://www.kaggle.com/datasets/thedevastator/imdb-movie-ratings-dataset
-   - **Content**: This dataset provides movie ratings, including IMDb ratings, votes, and reviews.
-   - **Processing Approach**: This data will be used to correlate actor clusters and genres with box office success metrics, allowing us to explore how specific actor networks and genres contribute to financial and critical success. It may also help assess how sentimental tones or villain portrayals affect audience reception.
-
-5. **Stanford CoreNLP-processed summaries**:
-   - **Content**: This complementary dataset contains all of the plot summaries from above, run through the Stanford CoreNLP pipeline.
-   - **Processing Approach**: We are still exploring how to use this dataset due to its unusual format and plan to study its pipeline to understand its storage structure.
-
-
-These datasets will be processed to handle memory management and enrichment tasks, such as merging genres with sentiment scores and managing network data.
-
+5. **[Stanford CoreNLP Dataset](https://stanfordnlp.github.io/CoreNLP/)**  
+   - **Content**: Plot summaries processed through the Stanford CoreNLP pipeline.
+   - **Processing Approach**: Exploring the dataset structure for effective integration into sentiment analysis pipelines.
 
 Here is the revised and more detailed version of your methods section reflecting the updates and additional content from the newly provided notebook:
 
 ---
 
-### Methods
+## Methods
 
-1. **NLP and Sentiment Analysis**:
-   - **Text Tokenization**: Using `NLTK`, we will tokenize plot summaries for sentiment analysis, capturing character emotions and identifying sympathetic or complex antagonist traits.
-   - **Sentiment Categorization**: The focus will be on categorizing sentiments related to character arcs, identifying sympathetic villains, and linking sentiment trends to box office success or critical acclaim. We specifically leveraged VADER Sentiment Analysis from the `nltk.sentiment` module for its accuracy in handling text with nuanced expressions. VADER provides polarity scores (called compound scores) ranging from -1 (highly negative) to +1 (highly positive), that were used to classify characters, identifying those with predominantly negative sentiments as potential villains and those with mixed or balanced sentiments as more complex, sympathetic figures.
+### 1. NLP and Sentiment Analysis
+- **Text Tokenization**: Using `NLTK` to tokenize plot summaries for sentiment analysis.
+- **Sentiment Categorization**: Employing VADER Sentiment Analysis to classify characters as sympathetic villains based on polarity scores.
 
-2. **Data Manipulation and Integration**:
-   - **Data Handling**: We will utilize cleaned data from `character.metadata.tsv` and `plot_summaries.txt` files to extract relevant features like `movie_id`, `character_name`, and their respective attributes.
-   - **Character-Level Analysis**: The emphasis is on using `pandas` to isolate character-level data, which allows for the identification of prominent characters, leading roles, and antagonistic portrayals in plot summaries.
+### 2. Data Manipulation and Integration
+- **Data Cleaning**: Extracting relevant features from `character.metadata.tsv` and `plot_summaries.txt`.
+- **Character Analysis**: Using `pandas` to isolate and analyze prominent characters and their portrayals.
 
-3. **Network Analysis of Actor Collaborations**:
-   - **Graph Construction**: Using `NetworkX`, we will build networks depicting collaborations among actors, identifying clusters and influential collaborations that correlate with box office performance.
-   - **Metrics for Influence**: The influence of actors in this analysis is measured using several key metrics. Actor Collaboration Frequency highlights how often actors work together, indicating the strength of their partnerships. Genre Diversity Score, calculated using Shannon Diversity Index, measures the versatility of actor pairs across different genres. Lastly, Network Centrality identifies the prominence of actors in the collaboration network based on their number of connections. Together, these metrics provide insights into the impact and versatility of actors within the movie industry.
+### 3. Network Analysis of Actor Collaborations
+- **Graph Construction**: Using `NetworkX` to map actor collaborations and clusters.
+- **Metrics**: Evaluating Actor Collaboration Frequency, Genre Diversity Score, and Network Centrality.
 
-4. **Machine Learning-Based Revenue and Ratings Predictor**:
-   - **Predictive Modeling**: Using `XGBoost` and `sklearn`, we will build models that predict a movie’s box office revenue and ratings based on actor collaborations, genres, and plot sentiment features.
-   - **Feature Engineering**: The model will incorporate sentiment scores, actor collaboration networks, genre influence, and director history to create a holistic prediction approach.
+### 4. Predictive Modeling
+- **Revenue and Ratings Prediction**: Using `XGBoost` and `sklearn` to predict box office revenues and IMDb ratings based on actor collaborations, genres, and sentiment.
 
-5. **Data Visualization**:
-   - **Visual Representation**: `Matplotlib` and `mplcursors` will be used to create interactive plots that display trends in actor collaborations, sentiment distributions over time, and other key metrics. The `matplotlib-venn` library will also be used to visualize the classification of characters as sympathetic villains. This library allowed us to create Venn diagrams to represent the overlap between characters identified as villains and those showing sympathetic traits based on their sentiment analysis and emotional scoring.
+### 5. Data Visualization
+- **Interactive Plots**: Created with `matplotlib`, `mplcursors`, and `matplotlib-venn`.
 
+## Project Contributions
 
-## Proposed Timeline
+### Visualizations
+- **Genre Trends and Evolution:** Visualizing how genres have evolved over time.
+- **Top Directors:** Highlighting directors and their most reviewed movies.
+- **Actor Collaboration Networks:** Exploring diversity and connectivity among actors.
+- **Sentiment Trends:** Analyzing antagonist portrayals and their emotional impact.
 
-| Phase                              | Tasks                                                                                                 | Date                         |
-|------------------------------------|-------------------------------------------------------------------------------------------------------|------------------------------|
-| **Week 1: Initial Setup**          | Dataset acquisition, initial analyses, and preprocessing setup                                        | Nov 5 - Nov 12               |
-| **Week 2: Data Exploration & Pipeline Setup** | Perform descriptive statistics, sentiment analysis setup, and pipeline documentation. HW2 initial work begins.  | Nov 12 - Nov 15 *(P2 Deadline)* |
-| **Week 3: HW2 Completion & Network Mapping**  | Complete HW2 tasks, including descriptive statistics and initial visualizations. Begin actor network mapping.  | Nov 16 - Nov 24              |
-| **Week 4: HW2 Submission & Sentiment Analysis** | Finalize HW2 deliverables. Conduct sentiment analysis on plot summaries to identify sympathetic villains and genre trends.   | Nov 25 - Nov 29 *(HW2 Deadline)* |
-| **Week 5: Visualization Refinement**          | Create visualizations for genre evolution, constellations, and sympathetic villain trends             | Dec 2 - Dec 8                |
-| **Week 6: Interactive Feature**    | Develop and test the interactive movie plot generator, integrate into final presentation              | Dec 9 - Dec 15               |
-| **Week 7: Finalization**           | Complete documentation, README update, data story creation, and project repository review             | Dec 16 - Dec 20 *(P3 Deadline)* |
+### Machine Learning Models
+- **Predictive Models:** Developed models to forecast IMDb ratings and box office revenues based on:
+  - Director influence
+  - Actor networks
+  - Genre attributes
 
+### Interactive Features
+- **Actor Collaboration Explorer:** A tool to explore actor networks and their collaborations.
+- **Movie Success Simulator:** Simulates the probability of success for a potential movie.
 
+---
 
-## Organization within the Team
+## Deliverables
 
-<table class="tg" style="table-layout: fixed; width: 342px">
-<colgroup>
-<col style="width: 160px">
-<col style="width: 280px">
-</colgroup>
-<thead>
-  <tr>
-    <th class="tg-0lax">Teammate Name</th>
-    <th class="tg-0lax">Contributions</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td class="tg-0lax">Karine Rafla </td>
-    <td class="tg-0lax">Reports redaction<br>Research on Freebase</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Mehdi Bouchoucha </td>
-    <td class="tg-0lax">Project layout<br>Additional datasets research</td>
-  </tr>
-    <tr>
-    <td class="tg-0lax">Mohamed Hedi Hidri </td>
-    <td class="tg-0lax"> Work on interactive predictor<br>Additionnal datasets research</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Sami Amrouche </td>
-    <td class="tg-0lax">Constellation work<br>Oscars analysis</td>
-  </tr>
-  <tr>
-    <td class="tg-0lax">Tamara Antoun </td>
-    <td class="tg-0lax">Work on sympathetic villain<br>Reports redaction</td>
-  </tr>
-</tbody>
-</table>
+### Visualizations
+- Genre Trends and Evolution
+- Actor Collaboration Networks
+- Sentiment Trends of Antagonists
 
-**Internal Milestones**:
-- **Nov 12**: Dataset acquisition and preprocessing setup completed, with initial analyses and descriptive statistics in place.
-- **Nov 15**: **P2 Submission** – README.md with detailed project proposal, preliminary analyses in a Jupyter notebook.
-- **Nov 24**: Completion of constellation network mapping and success analysis.
-- **Dec 1**: Completion of sentiment analysis and draft visualizations.
-- **Dec 8**: Completion of interactive feature and final visualization drafts.
-- **Dec 15**: Finalize all features, complete documentation, and prepare for **P3 submission**.
-- **Dec 20**: **P3 Submission** – Final project code, results notebook, and data story URL.
+### Machine Learning Models
+- Predictive models for IMDb ratings and box office revenues.
 
-## Challenges Faced and Adjusted Plans
+### Interactive Features
+- Actor Collaboration Explorer
+- Movie Success Simulator
 
-**Shift in Focus: From Interactive Movie Plot Generator to Revenue and Ratings Predictor**:
+### Final Deliverables
+- **Data Story**: [Here](https://mehdi1704.github.io/jekyll-theme-yat/).
+- **Final Notebook**: `results.ipynb`.
+- **Supporting Scripts**: For modular and clean implementation.
 
-Our original idea was to develop an Interactive Movie Plot Generator: a machine-learning-based tool that would propose new movie titles and summaries tailored to an actor’s typical roles by analyzing sentiment and genre data. The plan involved a generative model using text from plot summaries to align with an actor’s emotional and genre-based patterns.
+⚠️ **Notebook Viewer Compatibility Issue**: Interactive widgets may not render on static viewers like GitHub.
 
-However, we decided to pivot to a Revenue and Ratings Predictor instead. This new approach focuses on forecasting potential revenue and ratings by analyzing historical data from actors and directors, leveraging sentiment, genre, and other key attributes. The switch was driven by the realization that implementing a generative model locally would require extensive resources and introduce technical complexities that were outside our current scope.
+## Contributions
 
-This adjusted approach allowed us to focus on achievable predictive insights while still working with rich data on actors, directors, and genre alignment.
+| Team Member      | Contribution                                   |
+|-------------------|-----------------------------------------------|
+| **Karine Rafla** | Reports redaction, research on Freebase data |
+| **Mehdi Bouchoucha** | Project layout, dataset research         |
+| **Mohamed Hedi Hidri** | Interactive predictor, dataset research |
+| **Sami Amrouche** | Constellation work, Oscars analysis         |
+| **Tamara Antoun** | Sympathetic villain analysis, report writing |
 
-**Handling Freebase Data in Our Dataset**
+## Challenges and Adjusted Plans
 
-Our initial dataset includes numerous Freebase IDs. Freebase, originally owned by a different company, was acquired by Google and shut down in 2015. Although there is no longer API access to Freebase, we were able to locate a data dump from the last snapshot of the service. This dump contains links that refer to other Freebase IDs, but without direct API access, it posed challenges for retrieving relevant data.
+### 1. Shift in Focus
+- Original Goal: **Interactive Movie Plot Generator**.
+- Final Goal: **Revenue and Ratings Predictor**. 
+- **Reason**: Complexity of implementing a generative model locally with limited resources.
 
-After extensive research, we implemented an external converter that maps Freebase IDs to Wikidata entries. While this converter cannot resolve all references due to the loss of some data after Freebase’s shutdown, it still enables us to retrieve a portion of the information that would otherwise be inaccessible. This workaround allows us to recover some of the lost data and continue enriching our dataset with valuable external information.
+### 2. Freebase Data Challenges
+- Solution: Mapped Freebase IDs to Wikidata entries for partial data recovery.
 
-**CoreNLP Dataset**
+### 3. CoreNLP Dataset Utilization
+- Plan: Study the CoreNLP pipeline further for efficient integration.
 
-This complementary dataset contains all of the plot summaries mentioned earlier, processed through the Stanford CoreNLP pipeline. We are still exploring how to best utilize this dataset due to its unconventional format. Our plan is to study the pipeline further in order to understand its storage structure and determine the most efficient way to integrate it into our project.
+### Conclusion
+
+This project, completed as part of the **CS-401 Applied Data Analysis course at EPFL (2024)**, explores the intricate relationships between actors, genres, and sentiment in cinema, providing unique insights into the evolving dynamics of storytelling in Hollywood. Through a combination of **network analysis**, **sentiment analysis**, and **predictive modeling**, we achieved:
+
+- **Key Insights**: Understanding the rise of sympathetic villains, the evolution of genre trends, and the role of actor collaborations in movie success.
+- **Practical Tools**: Interactive visualizations and predictive models for exploring cinematic success factors, such as IMDb ratings and box office revenues.
+
+Despite challenges, including handling deprecated Freebase data and integrating unconventional CoreNLP datasets, our team implemented innovative solutions to deliver meaningful results.
+
+#### Future Directions:
+1. Expanding datasets to include **global cinema**, allowing for a more diverse and inclusive analysis.
+2. Developing a **generative model for movie plot creation**, tailoring summaries and titles to actor profiles and sentiment trends.
+3. Enhancing **interactivity in visual tools**, enabling deeper user engagement and exploration.
+
+This work lays a foundation for further exploration of the connections between storytelling, character sentiment, and cinematic success, contributing to the broader understanding of the evolving film industry. 
