@@ -404,35 +404,24 @@ def oscars_to_directors(oscars, movies_df):
     oscar_winners = oscars[oscars['winner'] == True]
     oscar_winners.dropna(subset='film')
     oscar_winners = oscar_winners.dropna(subset=['film'])
-    oscar_winners['film'] = oscar_winners['film'].str.lower()
-    movies_df['movie_title'] = movies_df['movie_title'].str.lower()
-    oscar_winners['film'] = oscar_winners['film'].str.strip()
-    movies_df['movie_title'] = movies_df['movie_title'].str.strip()
+    oscar_winners['film'] = oscar_winners['film'].str.lower().str.strip()
+    movies_df['movie_title'] = movies_df['movie_title'].str.lower().str.strip()
     # Merge movie data and oscar on the same movie title
-    oscar_and_imdb = oscar_winners.merge(movies_df, left_on='film', right_on='movie_title', how='inner')# Keep only relevant columns
-    filtered_oscars = oscar_and_imdb.loc[oscar_and_imdb['year_film'] == oscar_and_imdb['title_year'], 
-                                    [ 'category', 'film', 'director_name', 'num_user_for_reviews', 'country', 'title_year', 'imdb_score', 'decade']]
-    # Calculate the number of unique oscar winning movies per director
-    top_directors = (
-        filtered_oscars.groupby('director_name')['film']
-        .agg(
-            unique_movies_count='nunique',
-            unique_movies_list=lambda x: list(x.unique())
-        )
-        .reset_index()
-    )
+    oscar_and_imdb = oscar_winners.merge(movies_df, left_on='film', right_on='movie_title',
+                                         how='inner')  # Keep only relevant columns
 
-    # Display the resulting DataFrame
-    top_directors.sort_values('unique_movies_count', ascending=False)
-    # Adjust dataframe so that each movie gets its own row
-    top_directors = top_directors.explode('unique_movies_list')
+    top_20_directors = oscar_and_imdb.groupby('director_name').agg(
+        oscar_winning_movies=('movie_title', 'nunique')).sort_values(by='oscar_winning_movies', ascending=False).head(
+        20).reset_index()
+    top_20_directors['total_reviews'] = top_20_directors['director_name'].apply(
+        lambda x: movies_df[movies_df['director_name'] == x]['num_user_for_reviews'].sum())
+    top_20_directors_movies = movies_df[
 
-    # Rename the columns for clarity
-    top_directors = top_directors.rename(columns={'unique_movies_list': 'film'})
 
-    # Reorder the columns
-    top_directors = top_directors[['director_name', 'film', 'unique_movies_count']]
-
-    # Display the resulting DataFrame
-    top_directors.sort_values('unique_movies_count', ascending=False)
-    return top_directors
+    (movies_df['director_name'].isin(top_20_directors['director_name']))
+    & (movies_df['movie_title'].isin(oscar_winners['film']))
+    ]
+    top_20_directors_movies = top_20_directors_movies.merge(
+        top_20_directors_movies.groupby('director_name')['num_user_for_reviews'].sum().reset_index().rename(
+            columns={'num_user_for_reviews': 'director_total_reviews'}), on='director_name')
+    return top_20_directors_movies
