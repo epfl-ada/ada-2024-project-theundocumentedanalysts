@@ -150,11 +150,11 @@ Here is the revised and more detailed version of your methods section reflecting
 
 | Team Member      | Contribution                                   |
 |-------------------|-----------------------------------------------|
-| **Karine Rafla** | Reports redaction, research on Freebase data |
-| **Mehdi Bouchoucha** | Project layout, dataset research         |
-| **Mohamed Hedi Hidri** | Interactive predictor, dataset research |
-| **Sami Amrouche** | Constellation work, Oscars analysis         |
-| **Tamara Antoun** | Sympathetic villain analysis, report writing |
+| **Karine Rafla** | Cult movies research and analysis |
+| **Mehdi Bouchoucha** | Project layout and website creation |
+| **Mohamed Hedi Hidri** | Interactive predictor implementation |
+| **Sami Amrouche** | Genres and actors research and analysis |
+| **Tamara Antoun** | Cult characters research and analysis |
 
 ## Challenges and Adjusted Plans
 
