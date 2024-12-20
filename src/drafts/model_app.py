@@ -178,7 +178,7 @@ def prepare_input():
 st.markdown(
     """
     <style>
-    .predict-button {
+    div.stButton > button {
         background-color: #FF0000; /* Red color */
         color: white;
         padding: 10px 15px;
@@ -187,18 +187,15 @@ st.markdown(
         cursor: pointer;
         font-size: 16px;
     }
-    .predict-button:hover {
+    div.stButton > button:hover {
         background-color: #D00000; /* Slightly darker red on hover */
     }
     </style>
-    <form action="" method="post">
-        <button class="predict-button" type="submit">📊 Predict IMDb Score</button>
-    </form>
     """,
     unsafe_allow_html=True
 )
 
-if st.button("Predict", key="predict_button"):
+if st.button("📊 Predict IMDb Score"):
     if best_xgb is None:
         st.error("Model not loaded. Please load the model before predicting.")
     else:
