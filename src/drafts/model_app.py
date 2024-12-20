@@ -175,7 +175,34 @@ def prepare_input():
     return input_data
 
 # Prediction Button
-if st.button("📊 Predict IMDb Score"):
+st.markdown(
+    """
+    <style>
+    .predict-button {
+        background-color: #FF0000; /* Red color */
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+    .predict-button:hover {
+        background-color: #D00000; /* Slightly darker red on hover */
+    }
+    </style>
+    <button class="predict-button" onclick="predict()">📊 Predict IMDb Score</button>
+    <script>
+    function predict() {
+        const el = document.querySelector('button[kind="secondary"]');
+        if (el) el.click();
+    }
+    </script>
+    """,
+    unsafe_allow_html=True
+)
+
+if st.button("", key="secondary"):
     if best_xgb is None:
         st.error("Model not loaded. Please load the model before predicting.")
     else:
