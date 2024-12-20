@@ -156,18 +156,6 @@ Here is the revised and more detailed version of your methods section reflecting
 | **Sami Amrouche** | Genres and actors research and analysis |
 | **Tamara Antoun** | Cult characters research and analysis |
 
-## Challenges and Adjusted Plans
-
-### 1. Shift in Focus
-- Original Goal: **Interactive Movie Plot Generator**.
-- Final Goal: **Revenue and Ratings Predictor**. 
-- **Reason**: Complexity of implementing a generative model locally with limited resources.
-
-### 2. Freebase Data Challenges
-- Solution: Mapped Freebase IDs to Wikidata entries for partial data recovery.
-
-### 3. CoreNLP Dataset Utilization
-- Plan: Study the CoreNLP pipeline further for efficient integration.
 
 ### Conclusion
 
