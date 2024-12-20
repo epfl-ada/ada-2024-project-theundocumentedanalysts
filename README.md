@@ -13,7 +13,7 @@ The directory structure of new project looks like this:
 ├── data/                     <- Project data files #IGNORED
    ├── CMU_dataset/           <- Chosen dataset
    ├── TMDB_dataset/          <- TMDB local dataset to avoid API requests
-   ├── coreNLP                <- Additionnal Stanford CoreNLP-processed summaries dataset
+   ├── TMDB_dataset_csv/      <- TMDB local dataset to avoid API requests
    ├── the_oscar_award.csv    <- Academy Awards: 1927 - 2024 nominees and winners dataset
    └── movie_data.csv         <- Directors, Actors, Genres, and Movies ratings
 │
@@ -23,11 +23,10 @@ The directory structure of new project looks like this:
 │
 │
 ├── src/                               <- Source code
-   ├── results.ipynb                   <- Main file
+   ├── results_P2.ipynb                <- Old results file, containing all Milestone 2 analysis
    ├── helpers_actors_analysis.py      <- Helper functions to Actors, Movies and Oscars analysis
    ├── helpers_villain_analysis.py     <- Helper functions for villain sentiment analysis
    ├── helpers_API.py                  <- TMDB database API GET functions
-   ├── 3 additional html files         <- PyVis network graphs outputs for different actor/genre relations from results.ipynb notebook. Run the files on chrome for visualization.
    │
    └── drafts/                         <- Separate data pipelines and plots
       ├── SP_plot.ipynb                <- Sentiment/Popularity score plot for actors
@@ -36,10 +35,10 @@ The directory structure of new project looks like this:
       └── oscars_movies_analysis.ipynb <- Actor/Genres constellations analysis and additional oscars implementations
 │
 │
-├── freebasetowiki/             <- External Freebase converter to wikidata IDs
 │
+├── results.ipynb               <- New main file, containing all Milestone 3 analysis
+├── model.app                   <- Application containing our machine learning model deployed with the website
 │
-├── freebase_convert.py         <- Converter script from freebase to wikidata
 ├── notebook_merger.py          <- notebooks merger script
 ├── .gitignore                  <- List of files ignored by git
 ├── requirements.txt            <- List of used libraries
